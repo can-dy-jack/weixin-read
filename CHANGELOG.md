@@ -1,9 +1,5 @@
 # Change Log
 
-All notable changes to the "weixin-read" extension will be documented in this file.
+## [0.0.2] - 2023-1-29
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+- 插件基本功能开发完成并发布
