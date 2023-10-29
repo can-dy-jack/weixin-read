@@ -13,8 +13,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "weixin-read.helloWorld",
-      "title": "Hello World"
+      "command": "weixin-read.open",
+      "title": "打开微信阅读插件"
     }]
   },
   "scripts": {
