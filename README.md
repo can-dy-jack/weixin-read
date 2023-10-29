@@ -66,5 +66,8 @@ You can author your README using Visual Studio Code.  Here are some useful edito
 
 
 <!-- 
+文件
+发布
+
 插件开发指引：vsc-extension-quickstart
 -->

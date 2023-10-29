@@ -1,21 +1,43 @@
 {
   "name": "weixin-read",
-  "displayName": "weixin-read",
+  "displayName": "微信阅读",
   "description": "微信阅读插件",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.83.0"
   },
+  "author": {
+    "name": "can-dy-jack",
+    "email": "jjack_chen3@163.com"
+  },
+  "publisher": "kartjim",
   "categories": [
     "Other"
   ],
-  "activationEvents": ["*"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/can-dy-jack/weixin-read.git"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "keywords": [
+    "微信读书",
+    "微信阅读",
+    "阅读",
+    "weixin-read",
+    "weread"
+  ],
   "main": "./extension.js",
+  "icon": "assets/weixin-read.png",
+  "license": "MIT",
   "contributes": {
-    "commands": [{
-      "command": "weixin-read.open",
-      "title": "打开微信阅读插件"
-    }]
+    "commands": [
+      {
+        "command": "weixin-read.open",
+        "title": "打开微信阅读插件"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -23,13 +45,17 @@
     "test": "node ./test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.83.0",
     "@types/mocha": "^10.0.2",
     "@types/node": "18.x",
+    "@types/vscode": "^1.83.0",
+    "@vscode/test-electron": "^2.3.4",
+    "connect": "^3.7.0",
     "eslint": "^8.50.0",
+    "get-port": "^7.0.0",
     "glob": "^10.3.3",
+    "http-proxy-middleware": "^2.0.6",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
-    "@vscode/test-electron": "^2.3.4"
-  }
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {}
 }

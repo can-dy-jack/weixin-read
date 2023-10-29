@@ -1,5 +1,7 @@
-const vscode = require('vscode');
-const path = require('path');
+const vscode = require("vscode");
+const path = require("path");
+const WReadProxy = require("./server");
+// const getPort = require("get-port");
 
 class StatusBar {
   constructor() {
@@ -23,7 +25,7 @@ class StatusBar {
     this._statusBar.dispose();
   }
 }
-function createPanel(context) {
+function createWXReadPanel(context, url) {
 	let panel = vscode.window.createWebviewPanel(
 		'weixin-read',
 		'微信读书',
@@ -56,11 +58,16 @@ function createPanel(context) {
 			</style>
 		</head>
 		<body>
-			<iframe src="https://weread.qq.com/" id="weixin-read-iframe" />
+			<iframe src="${url}" id="weixin-read-iframe" />
 		</body>
 	</html>`;
 
 	return panel;
+}
+
+const PORT = 31000;
+function getProxyUri(port) {
+  return vscode.Uri.parse(`http://localhost:${port}`);
 }
 
 /**
@@ -70,11 +77,27 @@ function activate(context) {
 	const status = new StatusBar();
 
 	let panel;
+	let started = false;
 
-	let page = vscode.commands.registerCommand('weixin-read.open', function () {
+	let page = vscode.commands.registerCommand('weixin-read.open', async function () {
+		let port = 31000;
+		// let port = await getPort({
+		// 	port: PORT
+		// });
+
+		if (port !== PORT && !started) {
+			vscode.window.showErrorMessage(
+				`端口${PORT}已占用!`
+			);
+			return;
+		}
+
 		if (!panel) {
+			started = true;
+			new WReadProxy(context, port);
+
 			try {
-				panel = createPanel(context);	
+				panel = createWXReadPanel(context, getProxyUri(port));	
 			} catch (e) {
 				vscode.window.showErrorMessage(e);
 			}
