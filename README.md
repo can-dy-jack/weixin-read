@@ -14,8 +14,4 @@
 
 插件基本功能开发完成并发布
 
-<!-- 
-打包 `vsce pack`
-
-package.json 用户可配置信息
--->
+<!-- 打包 `vsce pack` package.json 用户可配置信息 -->
